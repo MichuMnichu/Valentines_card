@@ -1,0 +1,363 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2a 25%, #16213e 50%, #0f3460 75%, #1a1a2a 100%);
+    background-size: 400% 400%;
+    animation: cosmicShift 20s ease infinite;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+@keyframes cosmicShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+    animation: nebulaPulse 8s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes nebulaPulse {
+    0% { opacity: 0.5; transform: scale(1); }
+    100% { opacity: 0.8; transform: scale(1.1); }
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(25px);
+    border-radius: 25px;
+    padding: 60px;
+    text-align: center;
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    max-width: 650px;
+    width: 100%;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: hologramFlicker 4s ease-in-out infinite;
+}
+
+@keyframes hologramFlicker {
+    0%, 100% { opacity: 1; }
+    2% { opacity: 0.95; }
+    4% { opacity: 1; }
+    98% { opacity: 0.98; }
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg,
+        transparent,
+        rgba(255, 119, 198, 0.3),
+        rgba(120, 219, 255, 0.3),
+        rgba(120, 119, 198, 0.3),
+        transparent);
+    border-radius: 27px;
+    z-index: -1;
+    animation: borderGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes borderGlow {
+    0% { opacity: 0.3; }
+    100% { opacity: 0.8; }
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 3.2rem;
+    margin-bottom: 40px;
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.5),
+        0 0 20px rgba(255, 255, 255, 0.3),
+        0 0 30px rgba(255, 255, 255, 0.2);
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #ff77c6, #78d4ff, #7873f5, #ff77c6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+@keyframes textGlitch {
+    0%, 100% { transform: translateX(0); }
+    10% { transform: translateX(-2px); }
+    20% { transform: translateX(2px); }
+    30% { transform: translateX(-1px); }
+    40% { transform: translateX(1px); }
+    50% { transform: translateX(0); }
+}
+
+.button-container {
+    position: relative;
+    min-height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    margin-top: 45px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 22px 55px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 75px;
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    font-weight: 700;
+    min-width: 150px;
+    position: relative;
+    z-index: 10;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    overflow: hidden;
+    font-family: 'Orbitron', monospace;
+    margin: 5%;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        rgba(255, 255, 255, 0.2),
+        transparent);
+    transition: left 0.8s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-yes {
+    background: linear-gradient(135deg, #ff77c6, #ff3f8e);
+    color: white;
+    box-shadow:
+        0 15px 35px rgba(255, 119, 198, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    z-index: 5;
+    margin-right: -35px;
+}
+
+.btn-yes:hover {
+    transform: translateY(-8px) scale(1.15);
+    box-shadow:
+        0 25px 50px rgba(255, 119, 198, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-no {
+    background: linear-gradient(135deg, #78d4ff, #3f8eff);
+    color: white;
+    box-shadow:
+        0 15px 35px rgba(120, 212, 255, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    z-index: 20;
+}
+
+.btn-no:hover {
+    transform: translateY(-8px) scale(1.15);
+    box-shadow:
+        0 25px 50px rgba(120, 212, 255, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.hearts {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 35px 0;
+    font-size: 3.5rem;
+    color: #ff77c6;
+    text-shadow: 0 0 20px rgba(255, 119, 198, 0.8);
+}
+
+@keyframes heartsOrbit {
+    0%, 100% {
+        transform: translateY(0px) rotateY(0deg);
+    }
+    25% {
+        transform: translateY(-15px) rotateY(90deg);
+    }
+    50% {
+        transform: translateY(-8px) rotateY(180deg);
+    }
+    75% {
+        transform: translateY(-20px) rotateY(270deg);
+    }
+}
+
+.hearts span:nth-child(1) { animation-delay: 0s; }
+.hearts span:nth-child(2) { animation-delay: 1s; }
+.hearts span:nth-child(3) { animation-delay: 2s; }
+.hearts span:nth-child(4) { animation-delay: 3s; }
+.hearts span:nth-child(5) { animation-delay: 4s; }
+
+/* Particle effects */
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particleFloat 6s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 45px 35px;
+        border-radius: 20px;
+        max-width: 550px;
+    }
+
+    h1 {
+        font-size: 2.7rem;
+        margin-bottom: 35px;
+        letter-spacing: 2px;
+    }
+
+    .btn {
+        padding: 18px 45px;
+        font-size: 1.3rem;
+        min-width: 130px;
+    }
+
+    .btn-yes {
+        margin-right: 0;
+    }
+
+    .button-container {
+        gap: 30px;
+        min-height: 180px;
+    }
+
+    .hearts {
+        font-size: 3rem;
+        gap: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 40px 30px;
+        border-radius: 18px;
+    }
+
+    h1 {
+        font-size: 2.3rem;
+        margin-bottom: 30px;
+    }
+
+    .btn {
+        padding: 16px 40px;
+        font-size: 1.2rem;
+        min-width: 120px;
+    }
+
+    .button-container {
+        gap: 25px;
+        min-height: 170px;
+    }
+
+    .hearts {
+        font-size: 2.5rem;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 320px) {
+    .container {
+        padding: 35px 25px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .btn {
+        padding: 14px 35px;
+        font-size: 1.1rem;
+        min-width: 110px;
+    }
+
+    .button-container {
+        min-height: 150px;
+    }
+
+    .hearts {
+        font-size: 2rem;
+    }
+}
